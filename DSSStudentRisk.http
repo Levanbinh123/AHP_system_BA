@@ -1,0 +1,6 @@
+@DSSStudentRisk_HostAddress = http://localhost:5045
+
+GET {{DSSStudentRisk_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
