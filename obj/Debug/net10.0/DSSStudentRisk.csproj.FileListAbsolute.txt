@@ -122,3 +122,4 @@ C:\Users\young\MinimalProduct\DSSStudentRisk\obj\Debug\net10.0\refint\DSSStudent
 C:\Users\young\MinimalProduct\DSSStudentRisk\obj\Debug\net10.0\DSSStudentRisk.pdb
 C:\Users\young\MinimalProduct\DSSStudentRisk\obj\Debug\net10.0\DSSStudentRisk.genruntimeconfig.cache
 C:\Users\young\MinimalProduct\DSSStudentRisk\obj\Debug\net10.0\ref\DSSStudentRisk.dll
+C:\Users\young\MinimalProduct\DSSStudentRisk\obj\Debug\net10.0\DSSStudentRisk.sourcelink.json

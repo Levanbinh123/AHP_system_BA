@@ -16,4 +16,6 @@ public class AppDbContext : DbContext
     public DbSet<AHPCriteria> AHPCriteria { get; set; }
 
     public DbSet<RiskResult> RiskResults { get; set; }
+    public DbSet<AHPAlternativeWeight> AHPAlternativeWeights { get; set; }
+    public DbSet<AhpFinalResult> AHPFinalResults { get; set; }
 }

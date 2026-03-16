@@ -59,4 +59,54 @@ public class AHPService
 
         return (weight[0], weight[1], weight[2], CR);
     }
+
+//Bước 6: Tính độ ưu tiên của các phương án theo từng tiêu chí. 
+    public AhpMatrixResult CalculateMatrix(string criteria,double[][] matrix)
+    {
+        int n = matrix.Length;
+
+        double[] columnSum = new double[n];
+
+        for(int j=0;j<n;j++)
+        {
+            for(int i=0;i<n;i++)
+            {
+                columnSum[j]+=matrix[i][j];
+            }
+        }
+
+        double[][] normalized=new double[n][];
+
+        for(int i=0;i<n;i++)
+        {
+            normalized[i]=new double[n];
+
+            for(int j=0;j<n;j++)
+            {
+                normalized[i][j]=matrix[i][j]/columnSum[j];
+            }
+        }
+
+        double[] weights=new double[n];
+
+        for(int i=0;i<n;i++)
+        {
+            double sum=0;
+
+            for(int j=0;j<n;j++)
+            {
+                sum+=normalized[i][j];
+            }
+
+            weights[i]=sum/n;
+        }
+
+        return new AhpMatrixResult
+        {
+            Criteria=criteria,
+            ColumnSum=columnSum,
+            NormalizedMatrix=normalized,
+            Weights=weights
+        };
+    }
 }

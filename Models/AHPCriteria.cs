@@ -20,4 +20,6 @@ public class AHPCriteria
     public bool IsActive { get; set; }
 
     public DateTime CreatedDate { get; set; }
+    public List<AHPAlternativeWeight>? Alternatives { get; set; }
+public List<AhpFinalResult>? FinalResults { get; set; }
 }
