@@ -52,7 +52,7 @@
           "dependencies": {
             "EPPlus": {
               "target": "Package",
-              "version": "[8.4.2, )"
+              "version": "[8.5.0, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",

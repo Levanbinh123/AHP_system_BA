@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net10.0": {
-      "EPPlus/8.4.2": {
+      "EPPlus/8.5.0": {
         "type": "package",
         "dependencies": {
           "EPPlus.Interfaces": "8.4.0",
@@ -742,15 +742,15 @@
     }
   },
   "libraries": {
-    "EPPlus/8.4.2": {
-      "sha512": "tFvVPvNpn51NxtyGv7Hzg9nV+M33hX2Tq7tkaw3zxbQqIL8g99TfH0E6pli5huKLHLbntw+Q4nQYpu51YcQMpQ==",
+    "EPPlus/8.5.0": {
+      "sha512": "9VCtU/KD79APsDbqy7OnGCmW6hAdYuQRZGdxNRf+P/fLdygUGVVzGWedaaAuMTXxAfFEtGZjpKL3lyBJICoO7Q==",
       "type": "package",
-      "path": "epplus/8.4.2",
+      "path": "epplus/8.5.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "EPPlusLogo.png",
-        "epplus.8.4.2.nupkg.sha512",
+        "epplus.8.5.0.nupkg.sha512",
         "epplus.nuspec",
         "lib/net10.0/EPPlus.dll",
         "lib/net10.0/EPPlus.xml",
@@ -2345,7 +2345,7 @@
   },
   "projectFileDependencyGroups": {
     "net10.0": [
-      "EPPlus >= 8.4.2",
+      "EPPlus >= 8.5.0",
       "Microsoft.AspNetCore.OpenApi >= 10.0.2",
       "Microsoft.EntityFrameworkCore.Design >= 9.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.0",
@@ -2404,7 +2404,7 @@
         "dependencies": {
           "EPPlus": {
             "target": "Package",
-            "version": "[8.4.2, )"
+            "version": "[8.5.0, )"
           },
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",

@@ -17,15 +17,13 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFlutter",
         policy =>
         {
-            policy.WithOrigins("http://localhost:50564")
+            policy.WithOrigins("http://localhost:56501")
                   .AllowAnyHeader()
                   .AllowAnyMethod();
         });
 });
 builder.Services.AddControllers();
-
 var app = builder.Build();
 app.UseCors("AllowFlutter");
 app.MapControllers();
-
 app.Run();

@@ -22,6 +22,33 @@ namespace DSSStudentRisk.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
+            modelBuilder.Entity("AHPMatrix", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AHPCriteriaId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("CriteriaName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("MatrixJson")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AHPMatrices");
+                });
+
             modelBuilder.Entity("DSSStudentRisk.Models.AHPAlternativeWeight", b =>
                 {
                     b.Property<int>("Id")
