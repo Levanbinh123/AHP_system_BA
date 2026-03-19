@@ -123,3 +123,11 @@ C:\Users\young\MinimalProduct\DSSStudentRisk\obj\Debug\net10.0\DSSStudentRisk.pd
 C:\Users\young\MinimalProduct\DSSStudentRisk\obj\Debug\net10.0\DSSStudentRisk.genruntimeconfig.cache
 C:\Users\young\MinimalProduct\DSSStudentRisk\obj\Debug\net10.0\ref\DSSStudentRisk.dll
 C:\Users\young\MinimalProduct\DSSStudentRisk\obj\Debug\net10.0\DSSStudentRisk.sourcelink.json
+C:\Users\young\MinimalProduct\DSSStudentRisk\bin\Debug\net10.0\ClosedXML.dll
+C:\Users\young\MinimalProduct\DSSStudentRisk\bin\Debug\net10.0\ClosedXML.Parser.dll
+C:\Users\young\MinimalProduct\DSSStudentRisk\bin\Debug\net10.0\DocumentFormat.OpenXml.dll
+C:\Users\young\MinimalProduct\DSSStudentRisk\bin\Debug\net10.0\DocumentFormat.OpenXml.Framework.dll
+C:\Users\young\MinimalProduct\DSSStudentRisk\bin\Debug\net10.0\ExcelNumberFormat.dll
+C:\Users\young\MinimalProduct\DSSStudentRisk\bin\Debug\net10.0\RBush.dll
+C:\Users\young\MinimalProduct\DSSStudentRisk\bin\Debug\net10.0\SixLabors.Fonts.dll
+C:\Users\young\MinimalProduct\DSSStudentRisk\bin\Debug\net10.0\System.IO.Packaging.dll

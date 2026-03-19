@@ -1,9 +1,8 @@
 using DSSStudentRisk.Data;
 using DSSStudentRisk.Service;
 using Microsoft.EntityFrameworkCore;
-
+using OfficeOpenXml;
 var builder = WebApplication.CreateBuilder(args);
-
 builder.Services.AddDbContext<AppDbContext>(options =>
 options.UseMySql(
 builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -17,7 +16,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFlutter",
         policy =>
         {
-            policy.WithOrigins("http://localhost:56501")
+            policy.WithOrigins("http://localhost:54335")
                   .AllowAnyHeader()
                   .AllowAnyMethod();
         });
