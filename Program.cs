@@ -16,7 +16,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFlutter",
         policy =>
         {
-            policy.WithOrigins("http://localhost:54335")
+            policy.WithOrigins("http://localhost:53800")
                   .AllowAnyHeader()
                   .AllowAnyMethod();
         });
