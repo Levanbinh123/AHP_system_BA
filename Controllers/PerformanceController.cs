@@ -27,5 +27,26 @@ public class PerformanceController : ControllerBase
 
         return Ok(p);
     }
+    [HttpGet("{studentId}")]//lay lan nhap diem gannhatF
+    public IActionResult GetPerfomentByStudentId(int studentId)
+    {
+            var latest = _context.StudentPerformances
+        .Where(x => x.StudentId == studentId)
+        .OrderByDescending(x => x.CreatedDate)
+        .FirstOrDefault();
+        if(latest==null)
+        return NotFound();
+        return Ok(latest);
+    }
+    [HttpGet]
+public IActionResult GetPerfoment()
+{
+    var latest = _context.StudentPerformances
+        .GroupBy(x => x.StudentId)
+        .Select(g => g.OrderByDescending(x => x.CreatedDate).First())
+        .ToList();
+
+    return Ok(latest);
+}
 
 }

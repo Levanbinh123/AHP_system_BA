@@ -47,14 +47,7 @@ public class RiskController : ControllerBase
         double d2 = Math.Abs(score - final.A2);
         double d3 = Math.Abs(score - final.A3);
 
-        string level;
-
-        if (d1 <= d2 && d1 <= d3)
-            level = "Low Risk";
-        else if (d2 <= d1 && d2 <= d3)
-            level = "Medium Risk";
-        else
-            level = "High Risk";
+          string level = _risk.GetLevel(score, final.A1, final.A2);
 
         var result = new RiskResult
         {
@@ -73,46 +66,79 @@ public class RiskController : ControllerBase
     [HttpPost("calculate-all")]
     public async Task<IActionResult> CalculateAll()
     {
-       var criteria = _context.AHPCriteria
-        .FirstOrDefault(x => x.IsActive);
+        var criteria = _context.AHPCriteria.FirstOrDefault(x => x.IsActive);
         if (criteria == null)
-        {
             return BadRequest("Chưa có trọng số AHP");
-        }
-        var performances=_context.StudentPerformances.ToList();
-        foreach(var perf in performances)
+
+        var final = _context.AHPFinalResults
+            .OrderByDescending(x => x.CreatedDate)
+            .FirstOrDefault();
+
+        if (final == null)
+            return BadRequest("AHP final result not calculated");
+
+        var performances = _context.StudentPerformances.ToList();
+
+        int added = 0, updated = 0;
+
+        foreach (var perf in performances)
         {
-            double score=_risk.CalculateRisk(
+            double newScore = _risk.CalculateRisk(
                 perf.TestScore,
-                 perf.Attendance,
-            perf.StudyHours,
-            criteria.TestWeight,
-            criteria.AttendanceWeight,
-            criteria.StudyWeight);
-            var result= new RiskResult
+                perf.Attendance,
+                perf.StudyHours,
+                criteria.TestWeight,
+                criteria.AttendanceWeight,
+                criteria.StudyWeight
+            );
+
+            string newLevel = _risk.GetLevel(newScore, final.A1, final.A2);
+
+            var existing = _context.RiskResults
+                .FirstOrDefault(r => r.StudentId == perf.StudentId);
+
+            if (existing == null)
             {
-                StudentId=perf.StudentId,
-                RiskScore=score,
-                RiskLevel=_risk.GetLevel(score),
-                CalculatedDate=DateTime.Now
-            };
-            _context.RiskResults.Add(result);
+               
+                var result = new RiskResult
+                {
+                    StudentId = perf.StudentId,
+                    RiskScore = newScore,
+                    RiskLevel = newLevel,
+                    CalculatedDate = DateTime.Now
+                };
+                _context.RiskResults.Add(result);
+                added++;
+            }
+            else
+            {
+            
+                if (existing.RiskScore != newScore)
+                {
+                    existing.RiskScore = newScore;
+                    existing.RiskLevel = newLevel;
+                    existing.CalculatedDate = DateTime.Now;
+                    updated++;
+                }
+            }
         }
+
         await _context.SaveChangesAsync();
-    return Ok(new
-    {
-        message = "Calculated risk for all students",
-        total = performances.Count
-    });
+
+        return Ok(new
+        {
+            message = "Calculated risk for all students (NO DUPLICATE)",
+            added,
+            updated,
+            total = performances.Count
+        });
     }
  
-    [HttpGet("results")]
-    public IActionResult GetResults()
+    [HttpGet("results")]    public IActionResult GetResults()
     {
         var results = _context.RiskResults
             .OrderByDescending(x => x.RiskScore)
             .ToList();
-
         return Ok(results);
     }
   [HttpGet("top-risk")]
@@ -124,5 +150,20 @@ public class RiskController : ControllerBase
             .ToList();
 
         return Ok(results);
+    }
+    [HttpGet("summary")]
+    public IActionResult GetRiskSummary()
+    {
+        var latestResults=_context.RiskResults
+        .GroupBy(x=>x.StudentId)
+        .Select(g=>g.OrderByDescending(x=>x.CalculatedDate).First()).ToList();
+        var summary=new
+        {
+            low=latestResults.Count(x=>x.RiskLevel=="Low Risk"),
+             medium = latestResults.Count(x => x.RiskLevel == "Medium Risk"),
+        high = latestResults.Count(x => x.RiskLevel == "High Risk"),
+        total = latestResults.Count
+        };
+        return Ok(summary);
     }
 }
