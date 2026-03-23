@@ -1,6 +1,7 @@
 using DSSStudentRisk.Data;
 using DSSStudentRisk.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using OfficeOpenXml;
 namespace DSSStudentRisk.Controllers;
 [ApiController]
@@ -26,6 +27,12 @@ public class PerformanceController : ControllerBase
         await _context.SaveChangesAsync();
 
         return Ok(p);
+    }
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var scores=await _context.StudentPerformances.ToListAsync();
+        return Ok(scores);
     }
 
 }

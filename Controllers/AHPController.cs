@@ -53,8 +53,6 @@ public class AHPController : ControllerBase
             data = input
         });
     }
-
-    // ================== CALCULATE CRITERIA MATRIX ==================
     [HttpPost("criteria")]
     public async Task<IActionResult> CalculateCriteria(AhpMatrixRequest request)
     {
@@ -89,7 +87,6 @@ public class AHPController : ControllerBase
         return Ok(result);
     }
 
-    // ================== CALCULATE ALTERNATIVE WEIGHTS ==================
     [HttpPost("alternative")]
     public async Task<IActionResult> CalculateAlternative(AhpMatrixRequest request)
     {

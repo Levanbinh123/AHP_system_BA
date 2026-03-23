@@ -79,6 +79,12 @@ public class RiskController : ControllerBase
         {
             return BadRequest("Chưa có trọng số AHP");
         }
+         var final = _context.AHPFinalResults
+        .OrderByDescending(x => x.CreatedDate)
+        .FirstOrDefault();
+
+    if (final == null)
+        return BadRequest("Chưa có kết quả AHP (A1, A2, A3)");
         var performances=_context.StudentPerformances.ToList();
         foreach(var perf in performances)
         {
@@ -89,13 +95,24 @@ public class RiskController : ControllerBase
             criteria.TestWeight,
             criteria.AttendanceWeight,
             criteria.StudyWeight);
-            var result= new RiskResult
-            {
-                StudentId=perf.StudentId,
-                RiskScore=score,
-                RiskLevel=_risk.GetLevel(score),
-                CalculatedDate=DateTime.Now
-            };
+              double d1 = Math.Abs(score - final.A1);
+        double d2 = Math.Abs(score - final.A2);
+        double d3 = Math.Abs(score - final.A3);
+        string level;
+             if (d1 <= d2 && d1 <= d3)
+            level = "Low Risk";
+        else if (d2 <= d1 && d2 <= d3)
+            level = "Medium Risk";
+        else
+            level = "High Risk";
+
+        var result = new RiskResult
+        {
+            StudentId = perf.StudentId,
+            RiskScore = score,
+            RiskLevel = level,
+            CalculatedDate = DateTime.Now
+        };
             _context.RiskResults.Add(result);
         }
         await _context.SaveChangesAsync();

@@ -10,26 +10,14 @@ public class RiskService
         double wAttendance,
         double wStudy)
     {
-
         double rTest = 1 - (test / 10);
-
         double rAttendance = 1 - (attendance / 100);
-
-        double rStudy = 1 - (study / 10);
-
+        double rStudy = study < 2 ? 1 
+                : study < 4 ? 0.7 
+                : study < 6 ? 0.4 
+                : 0.1;
         return (rTest * wTest)
             + (rAttendance * wAttendance)
             + (rStudy * wStudy);
-    }
-
-    public string GetLevel(double score)
-    {
-        if (score < 0.4)
-            return "Low";
-
-        if (score < 0.7)
-            return "Medium";
-
-        return "High";
     }
 }

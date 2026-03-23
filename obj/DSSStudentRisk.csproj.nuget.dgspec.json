@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\young\\MinimalProduct\\DSSStudentRisk\\DSSStudentRisk.csproj": {}
+    "C:\\DSS_PROJECT\\DSSStudentRisk\\DSSStudentRisk.csproj": {}
   },
   "projects": {
-    "C:\\Users\\young\\MinimalProduct\\DSSStudentRisk\\DSSStudentRisk.csproj": {
+    "C:\\DSS_PROJECT\\DSSStudentRisk\\DSSStudentRisk.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\young\\MinimalProduct\\DSSStudentRisk\\DSSStudentRisk.csproj",
+        "projectUniqueName": "C:\\DSS_PROJECT\\DSSStudentRisk\\DSSStudentRisk.csproj",
         "projectName": "DSSStudentRisk",
-        "projectPath": "C:\\Users\\young\\MinimalProduct\\DSSStudentRisk\\DSSStudentRisk.csproj",
+        "projectPath": "C:\\DSS_PROJECT\\DSSStudentRisk\\DSSStudentRisk.csproj",
         "packagesPath": "C:\\Users\\young\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\young\\MinimalProduct\\DSSStudentRisk\\obj\\",
+        "outputPath": "C:\\DSS_PROJECT\\DSSStudentRisk\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

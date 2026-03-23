@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DSSStudentRisk")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+819b734cbe0bd6f5fff6d5827b5d909c9e024f05")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+044ae0d038fff2d27893f0900f0d476a35e725f4")]
 [assembly: System.Reflection.AssemblyProductAttribute("DSSStudentRisk")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DSSStudentRisk")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
